@@ -1,15 +1,15 @@
 $fn = 90;
 
 module baseBox() {
-    cube([25,5,6]);
+    cube([25,6,6]);
 
     translate([0,5+4,0])
         cube([25,15,7]);
 
     difference() {
         cube([25,36,7]);
-        translate([.5,.5,1])
-        cube([24,35,6]);
+        translate([1.5,1,1])
+        #cube([22.5,34,6]);
     }
 }
 
@@ -17,13 +17,18 @@ module boxWithCutout() {
     difference() {
         baseBox();
 
-        translate([-2,2.5,3])
+        translate([-2,3.5,3])
             rotate([0,90,0])
                 #cylinder(30, d=2.5);
+ 
+        #hull() {
+            translate([20,5,1])
+                cylinder(30, d=8);
 
-        translate([20,4.5,1])
-            #cylinder(30, d=8);
-
+            translate([18,5.5,1])
+                cylinder(30, d=8);
+        }
+ 
         translate([11.5,20,3])
             rotate([0,90,90])
                 #cylinder(30,d=4);
